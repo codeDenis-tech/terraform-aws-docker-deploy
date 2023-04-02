@@ -44,9 +44,9 @@ jobs:
         run: terraform apply -auto-approve -target=template_dir.task_definition
         working-directory: ./terraform
 
-      - name: Save ECR name to Environment Variables
-        run: echo "ECR_NAME=$(terraform output -raw ecr_repository_name)" >> $GITHUB_ENV
-        working-directory: ./terraform
+#       - name: Save ECR name to Environment Variables
+#         run: echo "ECR_NAME=$(terraform output -raw ecr_repository_name)" >> $GITHUB_ENV
+#         working-directory: ./terraform
 
       - name: Install packages
         run: npm ci
