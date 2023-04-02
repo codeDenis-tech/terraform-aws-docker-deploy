@@ -45,7 +45,7 @@ jobs:
         working-directory: ./terraform
 
 #       - name: Save ECR name to Environment Variables
-#         run: echo "ECR_NAME=$(terraform output -raw ecr_repository_name)" > $GITHUB_ENV
+#         run: echo "ECR_NAME=$(terraform output -raw ecr_repository_name)" >> $GITHUB_ENV
 #         working-directory: ./terraform
 
       - name: Install packages
@@ -62,7 +62,7 @@ jobs:
         id: build-image
         env:
            ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-           ECR_REPOSITORY: ${{ variables.ECR_NAME }}
+           ECR_REPOSITORY: ${{ env.ECR_NAME }}
            IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
