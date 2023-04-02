@@ -11,11 +11,11 @@ data "aws_iam_policy_document" "assume_role_policy_document" {
 }
 
 resource "aws_iam_role" "ecs_execution_role" {
-  name               = "ecs-execution-role_test"
+  name               = "ecs-execution-role-test"
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy_document.json
 }
 
 resource "aws_iam_role_policy_attachment" "instance" {
-  role       = aws_iam_role.ecs_execution_role_test.name
+  role       = aws_iam_role.ecs_execution_role.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
