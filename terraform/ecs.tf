@@ -68,7 +68,7 @@ resource "template_dir" "task_definition" {
   destination_dir = "${path.module}/rendered"
 
   vars = {
-    awslogs_group         = my_aws_cloudwatch_log_group.instance.name
+    awslogs_group         = aws_cloudwatch_log_group.instance.name
     awslogs_stream_prefix = "application"
     execution_role_arn    = aws_iam_role.ecs_execution_role.arn
     region                = "us-east-1"
@@ -76,7 +76,7 @@ resource "template_dir" "task_definition" {
 }
 
 resource "aws_cloudwatch_log_group" "instance" {
-  name              = "/aws/ecs/${local.ecs_service_name}"
+  name              = "/aws/ecs/${local.ecs_service_name}_"
   retention_in_days = 1
 }
 
