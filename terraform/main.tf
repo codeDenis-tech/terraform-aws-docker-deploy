@@ -6,13 +6,13 @@ terraform {
       #version = "~> 3.62.0"
     }
   }
-  backend "s3" {
-    bucket = "xsalazar-terraform-state"
-    key    = "terraform-aws-docker-deploy/terraform.tfstate"
-    region = "us-east-1"
-#     aws-access-key-id =  ${{ secrets.AWS_ACCESS_KEY_ID }}
-#     aws-secret-access-key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  }
+#   backend "s3" {
+#     bucket = "xsalazar-terraform-state"
+#     key    = "terraform-aws-docker-deploy/terraform.tfstate"
+#     region = "us-east-1"
+# #     aws-access-key-id =  ${{ secrets.AWS_ACCESS_KEY_ID }}
+# #     aws-secret-access-key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#   }
 }
 
 provider "aws" {
