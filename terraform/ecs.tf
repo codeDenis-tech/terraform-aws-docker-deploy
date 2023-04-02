@@ -30,8 +30,8 @@ resource "aws_ecs_service" "instance" {
     assign_public_ip = true
     security_groups  = ["sg-11972e50"]
     subnets = [
-      "subnet-24cdfd6f",
-      "subnet-6a5e4813"
+      "subnet-07adea6ad1ef80f5a",
+      "subnet-070ee9f78c9a86704"
     ]
   }
 
@@ -71,7 +71,7 @@ resource "template_dir" "task_definition" {
     awslogs_group         = aws_cloudwatch_log_group.instance.name
     awslogs_stream_prefix = "application"
     execution_role_arn    = aws_iam_role.ecs_execution_role.arn
-    region                = "us-west-2"
+    region                = "us-east-1"
   }
 }
 
