@@ -9,12 +9,12 @@ terraform {
   backend "s3" {
     bucket = "xsalazar-terraform-state"
     key    = "terraform-aws-docker-deploy/terraform.tfstate"
-    region = "us-west-2"
+    region = "us-east-1"
   }
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
   default_tags {
     tags = {
       CreatedBy = "terraform"
