@@ -53,7 +53,7 @@ resource "aws_ecs_task_definition" "instance" {
   requires_compatibilities = ["FARGATE"]
   memory                   = 512
   cpu                      = 256
-  execution_role_arn       = aws_iam_role.ecs_execution_role.arn
+  execution_role_arn       = aws_iam_role.ecs_execution_role_test.arn
   container_definitions = jsonencode([{
     name  = "container-definition"
     image = join("@", [aws_ecr_repository.instance.repository_url, data.aws_ecr_image.instance.image_digest])
@@ -70,7 +70,7 @@ resource "template_dir" "task_definition" {
   vars = {
     awslogs_group         = aws_cloudwatch_log_group.instance.name
     awslogs_stream_prefix = "application"
-    execution_role_arn    = aws_iam_role.ecs_execution_role.arn
+    execution_role_arn    = aws_iam_role.ecs_execution_role_test.arn
     region                = "us-west-2"
   }
 }
