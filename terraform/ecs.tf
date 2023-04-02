@@ -28,7 +28,7 @@ resource "aws_ecs_service" "instance" {
 
   network_configuration {
     assign_public_ip = true
-    security_groups  = ["ecs-sg"]
+    security_groups  = ["sg-0c27a123084b0c98e"]
     subnets = [
       "subnet-07adea6ad1ef80f5a",
       "subnet-070ee9f78c9a86704"
@@ -75,7 +75,7 @@ resource "template_dir" "task_definition" {
   }
 }
 
-resource "aws_cloudwatch_log_group" "instance" {
+resource "aws_cloudwatch_log_group_test" "instance" {
   name              = "/aws/ecs/${local.ecs_service_name}"
   retention_in_days = 1
 }
