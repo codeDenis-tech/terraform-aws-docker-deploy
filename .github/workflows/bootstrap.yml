@@ -19,25 +19,25 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Setup Terraform 🏗
-        uses: hashicorp/setup-terraform@v2.0.3
-        with:
-          terraform_version: 1.0.8
-          terraform_wrapper: false # Necessary to access output
+#       - name: Setup Terraform 🏗
+#         uses: hashicorp/setup-terraform@v2.0.3
+#         with:
+#           terraform_version: 1.0.8
+#           terraform_wrapper: false # Necessary to access output
 
-      - name: Terraform Init ✨
-        id: init
-        run: terraform init
-        working-directory: ./terraform
+#       - name: Terraform Init ✨
+#         id: init
+#         run: terraform init
+#         working-directory: ./terraform
 
-      - name: Terraform Apply ECR 💅
-        id: apply-partial
-        run: terraform apply -auto-approve -target=aws_ecr_repository.instance
-        working-directory: ./terraform
+#       - name: Terraform Apply ECR 💅
+#         id: apply-partial
+#         run: terraform apply -auto-approve -target=aws_ecr_repository.instance
+#         working-directory: ./terraform
 
-      - name: Save ECR name to Environment Variables 💾
-        run: echo "ECR_NAME=$(terraform output -raw ecr_repository_name)" >> $GITHUB_ENV
-        working-directory: ./terraform
+#       - name: Save ECR name to Environment Variables 💾
+#         run: echo "ECR_NAME=$(terraform output -raw ecr_repository_name)" >> $GITHUB_ENV
+#         working-directory: ./terraform
 
       - name: Setup Node 🏗
         uses: actions/setup-node@v3
@@ -66,7 +66,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         working-directory: ./app
 
-      - name: Terraform Apply 🚀
-        id: apply
-        run: terraform apply -auto-approve
-        working-directory: ./terraform
+#       - name: Terraform Apply 🚀
+#         id: apply
+#         run: terraform apply -auto-approve
+#         working-directory: ./terraform
