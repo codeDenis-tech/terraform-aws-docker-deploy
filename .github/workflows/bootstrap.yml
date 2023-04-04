@@ -58,7 +58,7 @@ jobs:
 
       - name: Build, tag, and push image to Amazon ECR 🏷
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REGISTRY: 037285738788.dkr.ecr.us-east-1.amazonaws.com
           ECR_REPOSITORY: ${{ env.ECR_NAME }}
           IMAGE_TAG: init
         run: |
