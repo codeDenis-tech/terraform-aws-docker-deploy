@@ -4,6 +4,7 @@ FROM node:14-alpine
 RUN apk --no-cache add curl
 
 COPY dist/out-tsc package*.json ./
+Copy ./requirements.txt /app/requirements.txt
 
 # Install NPM dependencies for function
 RUN npm ci --production
